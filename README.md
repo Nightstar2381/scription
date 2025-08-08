@@ -1,1 +1,1 @@
-#power sarat no coppy all
+#power By sarat no coppy all
