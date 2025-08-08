@@ -1,0 +1,50 @@
+.con {
+  width:500px;
+  height:80px;
+  background-color:black;
+  margin:20% auto;
+  position: absolute;
+  left:30%;
+  
+}
+.hel {
+  width:100%;
+  height:60px;
+  background-color:red;
+  position: relative;
+  top:10px;
+  left:1.3%;
+  border-radius:15px;
+  transition: width 0.5s ease;
+}
+
+<div class="damager">
+  <button value="30" onclick="Damag(this)">30</button>
+  <button value="50" onclick="Damag(this)">50</button>
+  <button value="100" onclick="Damag(this)">100</button>
+  <button onclick="resetHealth()">รีเซ็ต</button>
+
+</div>
+<div class="con">
+  <div class="hel" id="hel"></div>
+</div>
+
+const hel = document.getElementById('hel');
+const btn = document.querySelectorAll("button");
+
+function Damag(button) {
+  const damage = Number(button.value);
+
+    // ดึงค่าความกว้างปัจจุบัน (จาก inline style)
+    let currentWidth = parseFloat(hel.style.width);
+    if (isNaN(currentWidth)) currentWidth = 100; // ถ้าไม่มีค่า ให้ตั้ง 100%
+
+    let newWidth = currentWidth - damage;
+    if (newWidth < 0) newWidth = 0;
+
+    hel.style.width = newWidth + '%';
+}
+
+function resetHealth() {
+  hel.style.width = '100%';  // กลับไปเต็ม 100%
+}
